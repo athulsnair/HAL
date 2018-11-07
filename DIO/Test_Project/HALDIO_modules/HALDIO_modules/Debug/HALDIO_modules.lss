@@ -1,0 +1,321 @@
+
+HALDIO_modules.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  000001fa  0000026e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001fa  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  0000027a  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002ac  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000078  00000000  00000000  000002e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000d61  00000000  00000000  00000360  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000814  00000000  00000000  000010c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000442  00000000  00000000  000018d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000108  00000000  00000000  00001d18  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000066d  00000000  00000000  00001e20  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000451  00000000  00000000  0000248d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000058  00000000  00000000  000028de  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea ef       	ldi	r30, 0xFA	; 250
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 dc 00 	call	0x1b8	; 0x1b8 <main>
+  8e:	0c 94 fb 00 	jmp	0x1f6	; 0x1f6 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <Dio_ChannelWrite>:
+	}
+}
+
+void Dio_ChannelToggle(DioChannel_t const Channel)
+{
+	*ptoggle[Channel/NUM_PINS_PER_PORT] ^= (1UL<<(Channel%NUM_PINS_PER_PORT));
+  96:	ef 92       	push	r14
+  98:	ff 92       	push	r15
+  9a:	0f 93       	push	r16
+  9c:	1f 93       	push	r17
+  9e:	61 30       	cpi	r22, 0x01	; 1
+  a0:	01 f5       	brne	.+64     	; 0xe2 <Dio_ChannelWrite+0x4c>
+  a2:	e8 2f       	mov	r30, r24
+  a4:	e6 95       	lsr	r30
+  a6:	e6 95       	lsr	r30
+  a8:	e6 95       	lsr	r30
+  aa:	f0 e0       	ldi	r31, 0x00	; 0
+  ac:	ee 0f       	add	r30, r30
+  ae:	ff 1f       	adc	r31, r31
+  b0:	e0 50       	subi	r30, 0x00	; 0
+  b2:	ff 4f       	sbci	r31, 0xFF	; 255
+  b4:	01 90       	ld	r0, Z+
+  b6:	f0 81       	ld	r31, Z
+  b8:	e0 2d       	mov	r30, r0
+  ba:	20 81       	ld	r18, Z
+  bc:	87 70       	andi	r24, 0x07	; 7
+  be:	41 e0       	ldi	r20, 0x01	; 1
+  c0:	50 e0       	ldi	r21, 0x00	; 0
+  c2:	60 e0       	ldi	r22, 0x00	; 0
+  c4:	70 e0       	ldi	r23, 0x00	; 0
+  c6:	7a 01       	movw	r14, r20
+  c8:	8b 01       	movw	r16, r22
+  ca:	04 c0       	rjmp	.+8      	; 0xd4 <Dio_ChannelWrite+0x3e>
+  cc:	ee 0c       	add	r14, r14
+  ce:	ff 1c       	adc	r15, r15
+  d0:	00 1f       	adc	r16, r16
+  d2:	11 1f       	adc	r17, r17
+  d4:	8a 95       	dec	r24
+  d6:	d2 f7       	brpl	.-12     	; 0xcc <Dio_ChannelWrite+0x36>
+  d8:	d8 01       	movw	r26, r16
+  da:	c7 01       	movw	r24, r14
+  dc:	82 2b       	or	r24, r18
+  de:	80 83       	st	Z, r24
+  e0:	20 c0       	rjmp	.+64     	; 0x122 <Dio_ChannelWrite+0x8c>
+  e2:	e8 2f       	mov	r30, r24
+  e4:	e6 95       	lsr	r30
+  e6:	e6 95       	lsr	r30
+  e8:	e6 95       	lsr	r30
+  ea:	f0 e0       	ldi	r31, 0x00	; 0
+  ec:	ee 0f       	add	r30, r30
+  ee:	ff 1f       	adc	r31, r31
+  f0:	e0 50       	subi	r30, 0x00	; 0
+  f2:	ff 4f       	sbci	r31, 0xFF	; 255
+  f4:	01 90       	ld	r0, Z+
+  f6:	f0 81       	ld	r31, Z
+  f8:	e0 2d       	mov	r30, r0
+  fa:	20 81       	ld	r18, Z
+  fc:	87 70       	andi	r24, 0x07	; 7
+  fe:	41 e0       	ldi	r20, 0x01	; 1
+ 100:	50 e0       	ldi	r21, 0x00	; 0
+ 102:	60 e0       	ldi	r22, 0x00	; 0
+ 104:	70 e0       	ldi	r23, 0x00	; 0
+ 106:	7a 01       	movw	r14, r20
+ 108:	8b 01       	movw	r16, r22
+ 10a:	04 c0       	rjmp	.+8      	; 0x114 <Dio_ChannelWrite+0x7e>
+ 10c:	ee 0c       	add	r14, r14
+ 10e:	ff 1c       	adc	r15, r15
+ 110:	00 1f       	adc	r16, r16
+ 112:	11 1f       	adc	r17, r17
+ 114:	8a 95       	dec	r24
+ 116:	d2 f7       	brpl	.-12     	; 0x10c <Dio_ChannelWrite+0x76>
+ 118:	d8 01       	movw	r26, r16
+ 11a:	c7 01       	movw	r24, r14
+ 11c:	80 95       	com	r24
+ 11e:	82 23       	and	r24, r18
+ 120:	80 83       	st	Z, r24
+ 122:	1f 91       	pop	r17
+ 124:	0f 91       	pop	r16
+ 126:	ff 90       	pop	r15
+ 128:	ef 90       	pop	r14
+ 12a:	08 95       	ret
+
+0000012c <Dio_ChannelDirectionSet>:
+}
+
+void Dio_ChannelDirectionSet(DioChannel_t const Channel, PinModeEnum_t const Mode)
+{
+ 12c:	ef 92       	push	r14
+ 12e:	ff 92       	push	r15
+ 130:	0f 93       	push	r16
+ 132:	1f 93       	push	r17
+	uint8_t Number = 0;                     // Port Number
+	uint8_t Position = 0;                   // Pin Number
+
+	// Calculate the register and channel that needs to be changed.
+	Number   = Channel / NUM_PINS_PER_PORT;
+ 134:	e8 2f       	mov	r30, r24
+ 136:	e6 95       	lsr	r30
+ 138:	e6 95       	lsr	r30
+ 13a:	e6 95       	lsr	r30
+	Position = Channel % NUM_PINS_PER_PORT;
+ 13c:	87 70       	andi	r24, 0x07	; 7
+
+	// Set the Data Direction register bit for this channel
+	if(Mode == OUTPUT)
+ 13e:	61 11       	cpse	r22, r1
+ 140:	1b c0       	rjmp	.+54     	; 0x178 <Dio_ChannelDirectionSet+0x4c>
+	{
+		*portddr[Number] |= (1UL<<(Position));
+ 142:	f0 e0       	ldi	r31, 0x00	; 0
+ 144:	ee 0f       	add	r30, r30
+ 146:	ff 1f       	adc	r31, r31
+ 148:	ea 5f       	subi	r30, 0xFA	; 250
+ 14a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 14c:	01 90       	ld	r0, Z+
+ 14e:	f0 81       	ld	r31, Z
+ 150:	e0 2d       	mov	r30, r0
+ 152:	20 81       	ld	r18, Z
+ 154:	41 e0       	ldi	r20, 0x01	; 1
+ 156:	50 e0       	ldi	r21, 0x00	; 0
+ 158:	60 e0       	ldi	r22, 0x00	; 0
+ 15a:	70 e0       	ldi	r23, 0x00	; 0
+ 15c:	7a 01       	movw	r14, r20
+ 15e:	8b 01       	movw	r16, r22
+ 160:	04 c0       	rjmp	.+8      	; 0x16a <Dio_ChannelDirectionSet+0x3e>
+ 162:	ee 0c       	add	r14, r14
+ 164:	ff 1c       	adc	r15, r15
+ 166:	00 1f       	adc	r16, r16
+ 168:	11 1f       	adc	r17, r17
+ 16a:	8a 95       	dec	r24
+ 16c:	d2 f7       	brpl	.-12     	; 0x162 <Dio_ChannelDirectionSet+0x36>
+ 16e:	d8 01       	movw	r26, r16
+ 170:	c7 01       	movw	r24, r14
+ 172:	82 2b       	or	r24, r18
+ 174:	80 83       	st	Z, r24
+ 176:	1b c0       	rjmp	.+54     	; 0x1ae <Dio_ChannelDirectionSet+0x82>
+	}
+	else
+	{
+		*portddr[Number] &= ~(1UL<<(Position));
+ 178:	f0 e0       	ldi	r31, 0x00	; 0
+ 17a:	ee 0f       	add	r30, r30
+ 17c:	ff 1f       	adc	r31, r31
+ 17e:	ea 5f       	subi	r30, 0xFA	; 250
+ 180:	fe 4f       	sbci	r31, 0xFE	; 254
+ 182:	01 90       	ld	r0, Z+
+ 184:	f0 81       	ld	r31, Z
+ 186:	e0 2d       	mov	r30, r0
+ 188:	20 81       	ld	r18, Z
+ 18a:	41 e0       	ldi	r20, 0x01	; 1
+ 18c:	50 e0       	ldi	r21, 0x00	; 0
+ 18e:	60 e0       	ldi	r22, 0x00	; 0
+ 190:	70 e0       	ldi	r23, 0x00	; 0
+ 192:	7a 01       	movw	r14, r20
+ 194:	8b 01       	movw	r16, r22
+ 196:	04 c0       	rjmp	.+8      	; 0x1a0 <Dio_ChannelDirectionSet+0x74>
+ 198:	ee 0c       	add	r14, r14
+ 19a:	ff 1c       	adc	r15, r15
+ 19c:	00 1f       	adc	r16, r16
+ 19e:	11 1f       	adc	r17, r17
+ 1a0:	8a 95       	dec	r24
+ 1a2:	d2 f7       	brpl	.-12     	; 0x198 <Dio_ChannelDirectionSet+0x6c>
+ 1a4:	d8 01       	movw	r26, r16
+ 1a6:	c7 01       	movw	r24, r14
+ 1a8:	80 95       	com	r24
+ 1aa:	82 23       	and	r24, r18
+ 1ac:	80 83       	st	Z, r24
+	}
+}
+ 1ae:	1f 91       	pop	r17
+ 1b0:	0f 91       	pop	r16
+ 1b2:	ff 90       	pop	r15
+ 1b4:	ef 90       	pop	r14
+ 1b6:	08 95       	ret
+
+000001b8 <main>:
+	//Dio_Init(DioConfig);
+	
+	//DDRB = 0XFF;
+	
+	
+	Dio_ChannelDirectionSet(PORT1_4, OUTPUT);
+ 1b8:	60 e0       	ldi	r22, 0x00	; 0
+ 1ba:	84 e0       	ldi	r24, 0x04	; 4
+ 1bc:	0e 94 96 00 	call	0x12c	; 0x12c <Dio_ChannelDirectionSet>
+	{
+		
+		//Dio_ChannelToggle(PORT1_2);
+		//Dio_ChannelToggle(PORT1_3);
+		//Dio_ChannelToggle(PORT1_4);
+		Dio_ChannelWrite(PORT1_4, HIGH);
+ 1c0:	61 e0       	ldi	r22, 0x01	; 1
+ 1c2:	84 e0       	ldi	r24, 0x04	; 4
+ 1c4:	0e 94 4b 00 	call	0x96	; 0x96 <Dio_ChannelWrite>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1c8:	2f e3       	ldi	r18, 0x3F	; 63
+ 1ca:	8d e0       	ldi	r24, 0x0D	; 13
+ 1cc:	93 e0       	ldi	r25, 0x03	; 3
+ 1ce:	21 50       	subi	r18, 0x01	; 1
+ 1d0:	80 40       	sbci	r24, 0x00	; 0
+ 1d2:	90 40       	sbci	r25, 0x00	; 0
+ 1d4:	e1 f7       	brne	.-8      	; 0x1ce <main+0x16>
+ 1d6:	00 c0       	rjmp	.+0      	; 0x1d8 <main+0x20>
+ 1d8:	00 00       	nop
+		//*bbbb |= (1UL << (4));
+		_delay_ms(1000);
+		//Dio_ChannelToggle(PORT1_2);
+		//Dio_ChannelToggle(PORT1_3);
+		//Dio_ChannelToggle(PORT1_4);
+		Dio_ChannelWrite(PORT1_4, LOW);
+ 1da:	60 e0       	ldi	r22, 0x00	; 0
+ 1dc:	84 e0       	ldi	r24, 0x04	; 4
+ 1de:	0e 94 4b 00 	call	0x96	; 0x96 <Dio_ChannelWrite>
+ 1e2:	2f e3       	ldi	r18, 0x3F	; 63
+ 1e4:	8d e0       	ldi	r24, 0x0D	; 13
+ 1e6:	93 e0       	ldi	r25, 0x03	; 3
+ 1e8:	21 50       	subi	r18, 0x01	; 1
+ 1ea:	80 40       	sbci	r24, 0x00	; 0
+ 1ec:	90 40       	sbci	r25, 0x00	; 0
+ 1ee:	e1 f7       	brne	.-8      	; 0x1e8 <main+0x30>
+ 1f0:	00 c0       	rjmp	.+0      	; 0x1f2 <main+0x3a>
+ 1f2:	00 00       	nop
+ 1f4:	e5 cf       	rjmp	.-54     	; 0x1c0 <main+0x8>
+
+000001f6 <_exit>:
+ 1f6:	f8 94       	cli
+
+000001f8 <__stop_program>:
+ 1f8:	ff cf       	rjmp	.-2      	; 0x1f8 <__stop_program>
